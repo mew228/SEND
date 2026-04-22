@@ -1,0 +1,17 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "editor.formatOnSave": true,
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.java$",
+                "cmd": "cd backend && .\\gradlew.bat spotlessApply"
+            }
+        ]
+    },
+    "java.compile.nullAnalysis.mode": "automatic",
+    "ocaml.sandbox": {
+        "kind": "opam",
+        "switch": "overlock"
+    }
+}
