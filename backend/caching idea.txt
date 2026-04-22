@@ -1,0 +1,2 @@
+maybe if there's a large graph, use hashmap for o(1) and caching (check if previous node exists, if so use data from that)
+hashmap key would be current node, hashmap value would be a set/list of connected nodes. all nodes would be able to be found.
