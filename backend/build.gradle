@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.11'
+	id 'io.spring.dependency-management' version '1.1.7'
+	id 'net.ltgt.errorprone' version '4.3.0'
+	id 'com.diffplug.spotless' version '6.25.0'
+}
+
+group = 'dev.send'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.flywaydb:flyway-database-postgresql'
+	implementation 'org.apache.commons:commons-csv:1.14.1'
+	runtimeOnly 'org.postgresql:postgresql:42.7.3'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+	errorprone 'com.google.errorprone:error_prone_core:2.31.0'
+	errorprone 'com.uber.nullaway:nullaway:0.12.3'
+	//implementation 'com.google.guava:guava:33.5.0-jre' for multimap if needed
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'com.h2database:h2'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.errorprone {
+		check('NullAway', net.ltgt.gradle.errorprone.CheckSeverity.ERROR)
+		option('NullAway:AnnotatedPackages', 'dev.send.api')
+	}
+}
+
+spotless {
+	java {
+		target 'src/**/*.java'
+		googleJavaFormat()
+		removeUnusedImports()
+		trimTrailingWhitespace()
+		endWithNewline()
+	}
+}
