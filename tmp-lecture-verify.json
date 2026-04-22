@@ -1,0 +1,17 @@
+{
+  "nodes": [
+    {
+      "id": "price-1",
+      "type": "fetch_price",
+      "position": { "x": 100, "y": 100 },
+      "data": {}
+    },
+    {
+      "id": "buy-1",
+      "type": "buy",
+      "position": { "x": 300, "y": 100 },
+      "data": {}
+    }
+  ],
+  "edges": []
+}

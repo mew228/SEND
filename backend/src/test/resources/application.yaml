@@ -1,0 +1,43 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:h2:mem:send;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  flyway:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+database-bootstrap:
+  enabled: false
+
+market-data:
+  bootstrap-tracked-symbols: []
+  scheduler:
+    prices:
+      enabled: false
+      cron: "0 0 18 * * MON-FRI"
+      zone: "America/New_York"
+    fundamentals:
+      enabled: false
+      cron: "0 0 6 * * MON-FRI"
+      zone: "America/New_York"
+
+strategy:
+  rate-limit:
+    simulation-cooldown-ms: 5000
+
+app:
+  analytics:
+    umami:
+      script-uri: http://umami.internal/script.js
+      website-id: test-website-id
+  auth:
+    supabase:
+      issuer-uri: https://test-project.supabase.co/auth/v1
+      jwk-set-uri: https://test-project.supabase.co/auth/v1/.well-known/jwks.json
+      audience: authenticated
