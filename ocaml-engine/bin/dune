@@ -1,0 +1,10 @@
+(library
+ (name worker_support)
+ (wrapped false)
+ (modules worker_protocol worker_handler)
+ (libraries yojson hackvonium_engine hackvonium_runtime hackvonium_executors hackvonium_nodes hackvonium_spec))
+
+(executable
+ (name worker)
+ (modules worker)
+ (libraries hackvonium_engine worker_support))

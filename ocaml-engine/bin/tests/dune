@@ -1,0 +1,10 @@
+(test
+ (name worker_unit_test_runner)
+ (modules worker_unit_test_runner worker_protocol_test worker_handler_test)
+ (libraries worker_support yojson))
+
+(test
+ (name worker_process_test)
+ (modules worker_process_test)
+ (libraries worker_support yojson)
+ (action (run %{exe:worker_process_test.exe} %{exe:../worker.exe})))
