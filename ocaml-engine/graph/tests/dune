@@ -1,0 +1,4 @@
+(test
+ (name graph_test_runner)
+ (modules graph_test_runner graph_test)
+ (libraries hackvonium_engine))

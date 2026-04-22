@@ -1,0 +1,5 @@
+(library
+ (name hackvonium_runtime)
+ (wrapped false)
+ (modules engine_error engine simulation)
+ (libraries yojson unix hackvonium_engine hackvonium_executors hackvonium_nodes hackvonium_market_data))

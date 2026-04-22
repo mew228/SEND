@@ -1,0 +1,5 @@
+(library
+ (name hackvonium_executors)
+ (wrapped false)
+ (modules executor executor_registry)
+ (libraries hackvonium_engine))

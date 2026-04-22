@@ -1,0 +1,34 @@
+(library
+ (name hackvonium_nodes)
+ (wrapped false)
+ (modules
+ add
+  average
+  subtract
+  multiply
+  divide
+  negate
+  and_node
+  or_node
+  not_node
+  gt
+  gte
+  lt
+  lte
+  const_number
+  const_bool
+  const_string
+  fetch_company_profile
+  fetch_financial_statements
+  fetch_fundamentals
+  fetch_price
+  buy
+  sell
+  eq
+  neq
+  if_node
+  to_bool
+  to_number
+  to_string
+  primitive_registry)
+ (libraries hackvonium_executors hackvonium_market_data))
