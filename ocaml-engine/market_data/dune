@@ -1,0 +1,5 @@
+(library
+ (name hackvonium_market_data)
+ (wrapped false)
+ (modules market_data_reader)
+ (libraries postgresql))

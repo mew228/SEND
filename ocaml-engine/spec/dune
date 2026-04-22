@@ -1,0 +1,5 @@
+(library
+ (name hackvonium_spec)
+ (wrapped false)
+ (modules spec_error node_spec_decoder)
+ (libraries hackvonium_engine yojson))

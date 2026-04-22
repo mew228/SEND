@@ -1,0 +1,4 @@
+(test
+ (name node_spec_decoder_test_runner)
+ (modules node_spec_decoder_test_runner node_spec_decoder_test)
+ (libraries hackvonium_spec))
