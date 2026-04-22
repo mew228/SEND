@@ -1,0 +1,87 @@
+{
+  "nodeType": "fetch_price",
+  "set": "fetch",
+  "displayName": "Fetch Price Data",
+  "description": "Fetches a price-data field for a configured ticker and date.",
+  "theme": "market",
+  "inputs": [],
+  "outputs": [
+    {
+      "index": 0,
+      "name": "value",
+      "arity": "ONE",
+      "valueType": "NumVal"
+    }
+  ],
+  "dataFields": [
+    {
+      "name": "ticker",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "SPY"
+    },
+    {
+      "name": "field",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "close",
+      "options": [
+        "open",
+        "high",
+        "low",
+        "close",
+        "adj_close",
+        "volume",
+        "dividend",
+        "shares_outstanding"
+      ],
+      "readableOptions": [
+        "Open",
+        "High",
+        "Low",
+        "Close",
+        "Adjusted Close",
+        "Volume",
+        "Dividend",
+        "Shares Outstanding"
+      ]
+    },
+    {
+      "name": "dateBindingMode",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "simulation_day",
+      "options": [
+        "simulation_day",
+        "simulation_day_offset",
+        "explicit_date"
+      ],
+      "readableOptions": [
+        "Simulation Day",
+        "Simulation Day Offset",
+        "Set Date"
+      ]
+    },
+    {
+      "name": "dayOffset",
+      "valueType": "NumVal",
+      "required": false,
+      "defaultValue": 0,
+      "visibleWhen": {
+        "field": "dateBindingMode",
+        "values": ["simulation_day_offset"]
+      }
+    },
+    {
+      "name": "date",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "2020-04-27",
+      "visibleWhen": {
+        "field": "dateBindingMode",
+        "values": ["explicit_date"]
+      }
+    }
+  ],
+  "executorKey": "fetch_price"
+}

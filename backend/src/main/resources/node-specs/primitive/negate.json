@@ -1,0 +1,15 @@
+{
+  "nodeType": "negate",
+  "set": "primitive",
+  "displayName": "Negate",
+  "description": "Negates a number.",
+  "theme": "math",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "negate"
+}

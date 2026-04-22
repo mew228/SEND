@@ -1,0 +1,36 @@
+{
+  "nodeType": "between",
+  "set": "derived",
+  "displayName": "Between",
+  "description": "Checks whether a number lies between a minimum and maximum, inclusive.",
+  "theme": "compare",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 1, "name": "min", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 2, "name": "max", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "dataFields": [],
+  "derivedGraph": {
+    "nodes": [
+      { "id": "gte_min", "type": "gte", "data": {} },
+      { "id": "lte_max", "type": "lte", "data": {} },
+      { "id": "and", "type": "and", "data": {} }
+    ],
+    "edges": [
+      { "sourceNode": "gte_min", "sourcePort": 0, "targetNode": "and", "targetPort": 0 },
+      { "sourceNode": "lte_max", "sourcePort": 0, "targetNode": "and", "targetPort": 1 }
+    ],
+    "inputBindings": [
+      { "outerInput": "value", "targetNode": "gte_min", "targetPort": 0 },
+      { "outerInput": "min", "targetNode": "gte_min", "targetPort": 1 },
+      { "outerInput": "value", "targetNode": "lte_max", "targetPort": 0 },
+      { "outerInput": "max", "targetNode": "lte_max", "targetPort": 1 }
+    ],
+    "outputBindings": [
+      { "sourceNode": "and", "sourcePort": 0, "outerOutput": "result" }
+    ]
+  }
+}

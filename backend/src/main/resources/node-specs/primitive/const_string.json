@@ -1,0 +1,15 @@
+{
+  "nodeType": "const_string",
+  "set": "primitive",
+  "displayName": "Constant String",
+  "description": "Outputs a configured string constant.",
+  "theme": "const",
+  "inputs": [],
+  "outputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "StrVal" }
+  ],
+  "dataFields": [
+    { "name": "value", "valueType": "StrVal", "required": true, "defaultValue": "" }
+  ],
+  "executorKey": "const_string"
+}

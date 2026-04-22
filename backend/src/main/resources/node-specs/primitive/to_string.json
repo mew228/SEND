@@ -1,0 +1,15 @@
+{
+  "nodeType": "to_string",
+  "set": "primitive",
+  "displayName": "To String",
+  "description": "Converts a value into a string representation.",
+  "theme": "convert",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "Value" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "StrVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "to_string"
+}

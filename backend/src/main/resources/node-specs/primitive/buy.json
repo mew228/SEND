@@ -1,0 +1,106 @@
+{
+  "nodeType": "buy",
+  "set": "primitive",
+  "displayName": "Buy",
+  "description": "Executes a long buy order during simulation when the trigger input is true.",
+  "theme": "market",
+  "inputs": [
+    {
+      "index": 0,
+      "name": "trigger",
+      "arity": "ONE",
+      "valueType": "BoolVal"
+    }
+  ],
+  "outputs": [
+    {
+      "index": 0,
+      "name": "executed",
+      "arity": "ONE",
+      "valueType": "BoolVal"
+    },
+    {
+      "index": 1,
+      "name": "filled_shares",
+      "arity": "ONE",
+      "valueType": "NumVal"
+    },
+    {
+      "index": 2,
+      "name": "fill_price",
+      "arity": "ONE",
+      "valueType": "NumVal"
+    },
+    {
+      "index": 3,
+      "name": "cash_balance",
+      "arity": "ONE",
+      "valueType": "NumVal"
+    },
+    {
+      "index": 4,
+      "name": "realized_pnl",
+      "arity": "ONE",
+      "valueType": "NumVal"
+    }
+  ],
+  "dataFields": [
+    {
+      "name": "ticker",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "AAPL"
+    },
+    {
+      "name": "sizeMode",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "shares",
+      "options": [
+        "shares",
+        "dollars"
+      ],
+      "readableOptions": [
+        "Shares",
+        "Dollars"
+      ]
+    },
+    {
+      "name": "shareQuantity",
+      "valueType": "NumVal",
+      "required": false,
+      "defaultValue": 1,
+      "visibleWhen": {
+        "field": "sizeMode",
+        "values": ["shares"]
+      }
+    },
+    {
+      "name": "dollarAmount",
+      "valueType": "NumVal",
+      "required": false,
+      "defaultValue": 1000,
+      "visibleWhen": {
+        "field": "sizeMode",
+        "values": ["dollars"]
+      }
+    },
+    {
+      "name": "priceField",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "close",
+      "options": [
+        "open",
+        "close",
+        "adj_close"
+      ],
+      "readableOptions": [
+        "Open",
+        "Close",
+        "Adjusted Close"
+      ]
+    }
+  ],
+  "executorKey": "buy"
+}

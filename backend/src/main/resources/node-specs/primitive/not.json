@@ -1,0 +1,15 @@
+{
+  "nodeType": "not",
+  "set": "primitive",
+  "displayName": "Not",
+  "description": "Negates a boolean value.",
+  "theme": "logic",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "not"
+}

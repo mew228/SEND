@@ -1,0 +1,16 @@
+{
+  "nodeType": "gt",
+  "set": "primitive",
+  "displayName": "Greater Than",
+  "description": "Checks whether the left number is greater than the right number.",
+  "theme": "compare",
+  "inputs": [
+    { "index": 0, "name": "left", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 1, "name": "right", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "gt"
+}

@@ -1,0 +1,35 @@
+{
+  "nodeType": "abs",
+  "set": "derived",
+  "displayName": "Absolute Value",
+  "description": "Returns the absolute value of a number using primitive nodes.",
+  "theme": "derived",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "dataFields": [],
+  "derivedGraph": {
+    "nodes": [
+      { "id": "zero", "type": "const_number", "data": { "value": 0 } },
+      { "id": "is_positive", "type": "gte", "data": {} },
+      { "id": "negated", "type": "negate", "data": {} },
+      { "id": "pick", "type": "if", "data": {} }
+    ],
+    "edges": [
+      { "sourceNode": "zero", "sourcePort": 0, "targetNode": "is_positive", "targetPort": 1 },
+      { "sourceNode": "is_positive", "sourcePort": 0, "targetNode": "pick", "targetPort": 0 },
+      { "sourceNode": "negated", "sourcePort": 0, "targetNode": "pick", "targetPort": 2 }
+    ],
+    "inputBindings": [
+      { "outerInput": "value", "targetNode": "is_positive", "targetPort": 0 },
+      { "outerInput": "value", "targetNode": "negated", "targetPort": 0 },
+      { "outerInput": "value", "targetNode": "pick", "targetPort": 1 }
+    ],
+    "outputBindings": [
+      { "sourceNode": "pick", "sourcePort": 0, "outerOutput": "result" }
+    ]
+  }
+}

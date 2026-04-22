@@ -1,0 +1,243 @@
+{
+  "nodeType": "fetch_financial_statements",
+  "set": "fetch",
+  "displayName": "Fetch Financial Statements",
+  "description": "Fetches a financial statement field for a configured ticker, statement source, and as-of report date.",
+  "theme": "market",
+  "inputs": [],
+  "outputs": [
+    {
+      "index": 0,
+      "name": "value",
+      "arity": "ONE",
+      "valueType": "Value"
+    }
+  ],
+  "dataFields": [
+    {
+      "name": "ticker",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "AAPL"
+    },
+    {
+      "name": "sourceDataset",
+      "label": "Financial Statement",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "us-income-quarterly",
+      "options": [
+        "us-income-quarterly",
+        "us-balance-quarterly",
+        "us-cashflow-quarterly"
+      ],
+      "readableOptions": [
+        "Income Statement",
+        "Balance Sheet",
+        "Cash Flow Statement"
+      ]
+    },
+    {
+      "name": "field",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "revenue",
+      "optionFilter": {
+        "field": "sourceDataset",
+        "groups": {
+          "us-income-quarterly": {
+            "options": [
+              "currency",
+              "fiscal_year",
+              "fiscal_period",
+              "report_date",
+              "publish_date",
+              "restated_date",
+              "revenue",
+              "cost_of_revenue",
+              "sga",
+              "research_and_development",
+              "income_da",
+              "interest_expense_net",
+              "abnormal_gains",
+              "income_tax_net",
+              "extraordinary_gains_losses",
+              "net_income",
+              "shares_basic",
+              "shares_diluted"
+            ],
+            "readableOptions": [
+              "Currency",
+              "Fiscal Year",
+              "Fiscal Period",
+              "Report Date",
+              "Publish Date",
+              "Restated Date",
+              "Revenue",
+              "Cost of Revenue",
+              "SG&A",
+              "Research and Development",
+              "Income DA",
+              "Interest Expense Net",
+              "Abnormal Gains",
+              "Income Tax Net",
+              "Extraordinary Gains / Losses",
+              "Net Income",
+              "Shares Basic",
+              "Shares Diluted"
+            ]
+          },
+          "us-balance-quarterly": {
+            "options": [
+              "currency",
+              "fiscal_year",
+              "fiscal_period",
+              "report_date",
+              "publish_date",
+              "restated_date",
+              "cash_and_st_investments",
+              "accounts_notes_receivables",
+              "inventories",
+              "total_current_assets",
+              "ppe_net",
+              "lt_investments_receivables",
+              "other_lt_assets",
+              "total_noncurrent_assets",
+              "total_assets",
+              "payables_accruals",
+              "st_debt",
+              "total_current_liabilities",
+              "lt_debt",
+              "total_noncurrent_liabilities",
+              "total_liabilities",
+              "share_capital_apic",
+              "treasury_stock",
+              "retained_earnings",
+              "total_equity",
+              "total_liabilities_equity"
+            ],
+            "readableOptions": [
+              "Currency",
+              "Fiscal Year",
+              "Fiscal Period",
+              "Report Date",
+              "Publish Date",
+              "Restated Date",
+              "Cash and Short-Term Investments",
+              "Accounts / Notes Receivables",
+              "Inventories",
+              "Total Current Assets",
+              "PP&E Net",
+              "Long-Term Investments / Receivables",
+              "Other Long-Term Assets",
+              "Total Noncurrent Assets",
+              "Total Assets",
+              "Payables / Accruals",
+              "Short-Term Debt",
+              "Total Current Liabilities",
+              "Long-Term Debt",
+              "Total Noncurrent Liabilities",
+              "Total Liabilities",
+              "Share Capital APIC",
+              "Treasury Stock",
+              "Retained Earnings",
+              "Total Equity",
+              "Total Liabilities and Equity"
+            ]
+          },
+          "us-cashflow-quarterly": {
+            "options": [
+              "currency",
+              "fiscal_year",
+              "fiscal_period",
+              "report_date",
+              "publish_date",
+              "restated_date",
+              "cf_net_income_starting_line",
+              "cf_da",
+              "change_in_fixed_assets_intangibles",
+              "change_in_working_capital",
+              "change_in_accounts_receivable",
+              "change_in_inventories",
+              "change_in_accounts_payable",
+              "change_in_other",
+              "net_cash_operating_activities",
+              "change_fixed_assets_intangibles",
+              "net_change_lti",
+              "net_cash_acquisitions_divestitures",
+              "net_cash_investing_activities",
+              "dividends_paid",
+              "repayment_of_debt",
+              "repurchase_of_equity",
+              "net_cash_financing_activities",
+              "net_change_cash"
+            ],
+            "readableOptions": [
+              "Currency",
+              "Fiscal Year",
+              "Fiscal Period",
+              "Report Date",
+              "Publish Date",
+              "Restated Date",
+              "Cash Flow Net Income Starting Line",
+              "Cash Flow Depreciation & Amortization",
+              "Change in Fixed Assets / Intangibles",
+              "Change in Working Capital",
+              "Change in Accounts Receivable",
+              "Change in Inventories",
+              "Change in Accounts Payable",
+              "Change in Other",
+              "Net Cash Operating Activities",
+              "Capital Expenditures / Intangibles Change",
+              "Net Change in Long-Term Investments",
+              "Net Cash Acquisitions / Divestitures",
+              "Net Cash Investing Activities",
+              "Dividends Paid",
+              "Repayment of Debt",
+              "Repurchase of Equity",
+              "Net Cash Financing Activities",
+              "Net Change in Cash"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "name": "dateBindingMode",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "simulation_day",
+      "options": [
+        "simulation_day",
+        "simulation_day_offset",
+        "explicit_date"
+      ],
+      "readableOptions": [
+        "Simulation Day",
+        "Simulation Day Offset",
+        "Set Date"
+      ]
+    },
+    {
+      "name": "dayOffset",
+      "valueType": "NumVal",
+      "required": false,
+      "defaultValue": 0,
+      "visibleWhen": {
+        "field": "dateBindingMode",
+        "values": ["simulation_day_offset"]
+      }
+    },
+    {
+      "name": "reportDate",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "2020-04-30",
+      "visibleWhen": {
+        "field": "dateBindingMode",
+        "values": ["explicit_date"]
+      }
+    }
+  ],
+  "executorKey": "fetch_financial_statements"
+}

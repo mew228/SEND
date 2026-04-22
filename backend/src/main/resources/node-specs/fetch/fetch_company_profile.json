@@ -1,0 +1,53 @@
+{
+  "nodeType": "fetch_company_profile",
+  "set": "fetch",
+  "displayName": "Fetch Company Profile",
+  "description": "Fetches a company profile field for a configured ticker.",
+  "theme": "market",
+  "inputs": [],
+  "outputs": [
+    {
+      "index": 0,
+      "name": "value",
+      "arity": "ONE",
+      "valueType": "Value"
+    }
+  ],
+  "dataFields": [
+    {
+      "name": "ticker",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "AAPL"
+    },
+    {
+      "name": "field",
+      "valueType": "StrVal",
+      "required": true,
+      "defaultValue": "company_name",
+      "options": [
+        "company_name",
+        "industry_id",
+        "isin",
+        "fiscal_year_end_month",
+        "number_employees",
+        "business_summary",
+        "market",
+        "cik",
+        "main_currency"
+      ],
+      "readableOptions": [
+        "Company Name",
+        "Industry ID",
+        "ISIN",
+        "Fiscal Year End Month",
+        "Number of Employees",
+        "Business Summary",
+        "Market",
+        "CIK",
+        "Main Currency"
+      ]
+    }
+  ],
+  "executorKey": "fetch_company_profile"
+}

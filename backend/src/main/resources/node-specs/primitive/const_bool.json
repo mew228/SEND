@@ -1,0 +1,15 @@
+{
+  "nodeType": "const_bool",
+  "set": "primitive",
+  "displayName": "Constant Boolean",
+  "description": "Outputs a configured boolean constant.",
+  "theme": "const",
+  "inputs": [],
+  "outputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "dataFields": [
+    { "name": "value", "valueType": "BoolVal", "required": true, "defaultValue": false }
+  ],
+  "executorKey": "const_bool"
+}

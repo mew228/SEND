@@ -1,0 +1,17 @@
+{
+  "nodeType": "if",
+  "set": "primitive",
+  "displayName": "If",
+  "description": "Selects between two values based on a boolean condition.",
+  "theme": "flow",
+  "inputs": [
+    { "index": 0, "name": "condition", "arity": "ONE", "valueType": "BoolVal" },
+    { "index": 1, "name": "when_true", "arity": "ONE", "valueType": "Value" },
+    { "index": 2, "name": "when_false", "arity": "ONE", "valueType": "Value" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "Value" }
+  ],
+  "dataFields": [],
+  "executorKey": "if"
+}

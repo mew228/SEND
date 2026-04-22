@@ -1,0 +1,215 @@
+{
+  "nodes": [
+    {
+      "id": "n-bcf2fbc2-6b61-450d-afb9-23986480374d",
+      "type": "fetch_price",
+      "position": {
+        "x": 28,
+        "y": 0
+      },
+      "data": {
+        "ticker": "AAPL",
+        "field": "close",
+        "dateBindingMode": "simulation_day",
+        "dayOffset": 0,
+        "date": "2020-04-27"
+      }
+    },
+    {
+      "id": "n-991247bb-7ef0-41ad-90f3-1c5fb46921fd",
+      "type": "gt",
+      "position": {
+        "x": 572,
+        "y": 106
+      },
+      "data": {}
+    },
+    {
+      "id": "n-d5af8d9e-4f54-45f0-a93a-a9ecb42bf4ee",
+      "type": "const_number",
+      "position": {
+        "x": 0,
+        "y": 306
+      },
+      "data": {
+        "value": 200
+      }
+    },
+    {
+      "id": "n-95c18e24-4932-495d-b35c-6436552409d7",
+      "type": "if",
+      "position": {
+        "x": 891,
+        "y": 117
+      },
+      "data": {}
+    },
+    {
+      "id": "n-6a4e1ea0-484e-45fb-a180-558ffbfe03c8",
+      "type": "const_bool",
+      "position": {
+        "x": 542,
+        "y": 251
+      },
+      "data": {
+        "value": true
+      }
+    },
+    {
+      "id": "n-83668077-c72b-4533-862d-74f9079914c2",
+      "type": "const_bool",
+      "position": {
+        "x": 679,
+        "y": 372
+      },
+      "data": {
+        "value": false
+      }
+    },
+    {
+      "id": "n-0ae16a55-d2d1-4871-aa33-2563702037db",
+      "type": "buy",
+      "position": {
+        "x": 1151,
+        "y": 577
+      },
+      "data": {
+        "ticker": "AAPL",
+        "sizeMode": "shares",
+        "shareQuantity": 1,
+        "dollarAmount": 1000,
+        "priceField": "close"
+      }
+    },
+    {
+      "id": "n-968eddb4-7fd1-4ae4-bc47-3387bb247067",
+      "type": "sell",
+      "position": {
+        "x": 1272,
+        "y": 105
+      },
+      "data": {
+        "ticker": "AAPL",
+        "sizeMode": "shares",
+        "shareQuantity": 1,
+        "dollarAmount": 1000,
+        "priceField": "close"
+      }
+    },
+    {
+      "id": "n-02a255da-af06-4786-b14f-7e478200d92f",
+      "type": "const_number",
+      "position": {
+        "x": 101,
+        "y": 503
+      },
+      "data": {
+        "value": 180
+      }
+    },
+    {
+      "id": "n-5a9f216f-1508-414c-93cb-07a9e54c3aed",
+      "type": "lt",
+      "position": {
+        "x": 381,
+        "y": 490
+      },
+      "data": {}
+    },
+    {
+      "id": "n-12ea98a1-eb5f-415b-b781-52a972693aaf",
+      "type": "if",
+      "position": {
+        "x": 822,
+        "y": 516
+      },
+      "data": {}
+    }
+  ],
+  "edges": [
+    {
+      "id": "reactflow__edge-n-bcf2fbc2-6b61-450d-afb9-23986480374dout:0-n-991247bb-7ef0-41ad-90f3-1c5fb46921fdin:0",
+      "source": "n-bcf2fbc2-6b61-450d-afb9-23986480374d",
+      "target": "n-991247bb-7ef0-41ad-90f3-1c5fb46921fd",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:0"
+    },
+    {
+      "id": "reactflow__edge-n-d5af8d9e-4f54-45f0-a93a-a9ecb42bf4eeout:0-n-991247bb-7ef0-41ad-90f3-1c5fb46921fdin:1",
+      "source": "n-d5af8d9e-4f54-45f0-a93a-a9ecb42bf4ee",
+      "target": "n-991247bb-7ef0-41ad-90f3-1c5fb46921fd",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:1"
+    },
+    {
+      "id": "reactflow__edge-n-991247bb-7ef0-41ad-90f3-1c5fb46921fdout:0-n-95c18e24-4932-495d-b35c-6436552409d7in:0",
+      "source": "n-991247bb-7ef0-41ad-90f3-1c5fb46921fd",
+      "target": "n-95c18e24-4932-495d-b35c-6436552409d7",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:0"
+    },
+    {
+      "id": "reactflow__edge-n-6a4e1ea0-484e-45fb-a180-558ffbfe03c8out:0-n-95c18e24-4932-495d-b35c-6436552409d7in:1",
+      "source": "n-6a4e1ea0-484e-45fb-a180-558ffbfe03c8",
+      "target": "n-95c18e24-4932-495d-b35c-6436552409d7",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:1"
+    },
+    {
+      "id": "reactflow__edge-n-83668077-c72b-4533-862d-74f9079914c2out:0-n-95c18e24-4932-495d-b35c-6436552409d7in:2",
+      "source": "n-83668077-c72b-4533-862d-74f9079914c2",
+      "target": "n-95c18e24-4932-495d-b35c-6436552409d7",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:2"
+    },
+    {
+      "id": "reactflow__edge-n-95c18e24-4932-495d-b35c-6436552409d7out:0-n-968eddb4-7fd1-4ae4-bc47-3387bb247067in:0",
+      "source": "n-95c18e24-4932-495d-b35c-6436552409d7",
+      "target": "n-968eddb4-7fd1-4ae4-bc47-3387bb247067",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:0"
+    },
+    {
+      "id": "reactflow__edge-n-02a255da-af06-4786-b14f-7e478200d92fout:0-n-5a9f216f-1508-414c-93cb-07a9e54c3aedin:1",
+      "source": "n-02a255da-af06-4786-b14f-7e478200d92f",
+      "target": "n-5a9f216f-1508-414c-93cb-07a9e54c3aed",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:1"
+    },
+    {
+      "id": "reactflow__edge-n-bcf2fbc2-6b61-450d-afb9-23986480374dout:0-n-5a9f216f-1508-414c-93cb-07a9e54c3aedin:0",
+      "source": "n-bcf2fbc2-6b61-450d-afb9-23986480374d",
+      "target": "n-5a9f216f-1508-414c-93cb-07a9e54c3aed",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:0"
+    },
+    {
+      "id": "reactflow__edge-n-5a9f216f-1508-414c-93cb-07a9e54c3aedout:0-n-12ea98a1-eb5f-415b-b781-52a972693aafin:0",
+      "source": "n-5a9f216f-1508-414c-93cb-07a9e54c3aed",
+      "target": "n-12ea98a1-eb5f-415b-b781-52a972693aaf",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:0"
+    },
+    {
+      "id": "reactflow__edge-n-83668077-c72b-4533-862d-74f9079914c2out:0-n-12ea98a1-eb5f-415b-b781-52a972693aafin:2",
+      "source": "n-83668077-c72b-4533-862d-74f9079914c2",
+      "target": "n-12ea98a1-eb5f-415b-b781-52a972693aaf",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:2"
+    },
+    {
+      "id": "reactflow__edge-n-6a4e1ea0-484e-45fb-a180-558ffbfe03c8out:0-n-12ea98a1-eb5f-415b-b781-52a972693aafin:1",
+      "source": "n-6a4e1ea0-484e-45fb-a180-558ffbfe03c8",
+      "target": "n-12ea98a1-eb5f-415b-b781-52a972693aaf",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:1"
+    },
+    {
+      "id": "reactflow__edge-n-12ea98a1-eb5f-415b-b781-52a972693aafout:0-n-0ae16a55-d2d1-4871-aa33-2563702037dbin:0",
+      "source": "n-12ea98a1-eb5f-415b-b781-52a972693aaf",
+      "target": "n-0ae16a55-d2d1-4871-aa33-2563702037db",
+      "sourceHandle": "out:0",
+      "targetHandle": "in:0"
+    }
+  ]
+}

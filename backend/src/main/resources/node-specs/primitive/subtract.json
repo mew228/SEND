@@ -1,0 +1,16 @@
+{
+  "nodeType": "subtract",
+  "set": "primitive",
+  "displayName": "Subtract",
+  "description": "Subtracts the second number from the first.",
+  "theme": "math",
+  "inputs": [
+    { "index": 0, "name": "a", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 1, "name": "b", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "difference", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "subtract"
+}

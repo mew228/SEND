@@ -1,0 +1,16 @@
+{
+  "nodeType": "neq",
+  "set": "primitive",
+  "displayName": "Not Equals",
+  "description": "Checks whether two values are not equal.",
+  "theme": "compare",
+  "inputs": [
+    { "index": 0, "name": "left", "arity": "ONE", "valueType": "Value" },
+    { "index": 1, "name": "right", "arity": "ONE", "valueType": "Value" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "neq"
+}

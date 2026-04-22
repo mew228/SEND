@@ -1,0 +1,41 @@
+{
+  "nodeType": "clamp",
+  "set": "derived",
+  "displayName": "Clamp",
+  "description": "Clamps a number between a minimum and maximum using primitive nodes.",
+  "theme": "derived",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 1, "name": "min", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 2, "name": "max", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "dataFields": [],
+  "derivedGraph": {
+    "nodes": [
+      { "id": "below_min", "type": "lt", "data": {} },
+      { "id": "pick_min", "type": "if", "data": {} },
+      { "id": "above_max", "type": "gt", "data": {} },
+      { "id": "pick_max", "type": "if", "data": {} }
+    ],
+    "edges": [
+      { "sourceNode": "below_min", "sourcePort": 0, "targetNode": "pick_min", "targetPort": 0 },
+      { "sourceNode": "pick_min", "sourcePort": 0, "targetNode": "above_max", "targetPort": 0 },
+      { "sourceNode": "above_max", "sourcePort": 0, "targetNode": "pick_max", "targetPort": 0 },
+      { "sourceNode": "pick_min", "sourcePort": 0, "targetNode": "pick_max", "targetPort": 2 }
+    ],
+    "inputBindings": [
+      { "outerInput": "value", "targetNode": "below_min", "targetPort": 0 },
+      { "outerInput": "min", "targetNode": "below_min", "targetPort": 1 },
+      { "outerInput": "min", "targetNode": "pick_min", "targetPort": 1 },
+      { "outerInput": "value", "targetNode": "pick_min", "targetPort": 2 },
+      { "outerInput": "max", "targetNode": "above_max", "targetPort": 1 },
+      { "outerInput": "max", "targetNode": "pick_max", "targetPort": 1 }
+    ],
+    "outputBindings": [
+      { "sourceNode": "pick_max", "sourcePort": 0, "outerOutput": "result" }
+    ]
+  }
+}

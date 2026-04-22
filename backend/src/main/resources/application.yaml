@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: send-api
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+database-bootstrap:
+  enabled: true
+  data-directory: ../data
+
+market-data:
+  bootstrap-tracked-symbols:
+    []
+  scheduler:
+    prices:
+      enabled: false
+      cron: "0 0 18 * * MON-FRI"
+      zone: "America/New_York"
+    fundamentals:
+      enabled: false
+      cron: "0 0 6 * * MON-FRI"
+      zone: "America/New_York"
+
+ocaml:
+  worker:
+    command: ""
+
+strategy:
+  rate-limit:
+    simulation-cooldown-ms: 5000
+
+app:
+  analytics:
+    umami:
+      script-uri: ${APP_ANALYTICS_UMAMI_SCRIPT_URI:}
+      website-id: ${APP_ANALYTICS_UMAMI_WEBSITE_ID:}
+  auth:
+    supabase:
+      issuer-uri: ${APP_AUTH_SUPABASE_ISSUER_URI:}
+      jwk-set-uri: ${APP_AUTH_SUPABASE_JWK_SET_URI:}
+      jwt-secret: ${APP_AUTH_SUPABASE_JWT_SECRET:}
+      audience: ${APP_AUTH_SUPABASE_AUDIENCE:authenticated}

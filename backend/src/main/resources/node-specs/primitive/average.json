@@ -1,0 +1,15 @@
+{
+  "nodeType": "average",
+  "set": "primitive",
+  "displayName": "Average",
+  "description": "Computes the average of any connected number inputs.",
+  "theme": "derived",
+  "inputs": [
+    { "index": 0, "name": "values", "arity": "MANY", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "average", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "average"
+}

@@ -1,0 +1,15 @@
+{
+  "nodeType": "to_bool",
+  "set": "primitive",
+  "displayName": "To Boolean",
+  "description": "Converts a value into a boolean representation.",
+  "theme": "convert",
+  "inputs": [
+    { "index": 0, "name": "value", "arity": "ONE", "valueType": "Value" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "result", "arity": "ONE", "valueType": "BoolVal" }
+  ],
+  "dataFields": [],
+  "executorKey": "to_bool"
+}

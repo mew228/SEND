@@ -1,0 +1,36 @@
+{
+  "nodeType": "percent_change",
+  "set": "derived",
+  "displayName": "Percent Change",
+  "description": "Computes percentage change from a previous value to a current value.",
+  "theme": "derived",
+  "inputs": [
+    { "index": 0, "name": "current", "arity": "ONE", "valueType": "NumVal" },
+    { "index": 1, "name": "previous", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "outputs": [
+    { "index": 0, "name": "percent", "arity": "ONE", "valueType": "NumVal" }
+  ],
+  "dataFields": [],
+  "derivedGraph": {
+    "nodes": [
+      { "id": "difference", "type": "subtract", "data": {} },
+      { "id": "ratio", "type": "divide", "data": {} },
+      { "id": "hundred", "type": "const_number", "data": { "value": 100 } },
+      { "id": "percent", "type": "multiply", "data": {} }
+    ],
+    "edges": [
+      { "sourceNode": "difference", "sourcePort": 0, "targetNode": "ratio", "targetPort": 0 },
+      { "sourceNode": "ratio", "sourcePort": 0, "targetNode": "percent", "targetPort": 0 },
+      { "sourceNode": "hundred", "sourcePort": 0, "targetNode": "percent", "targetPort": 1 }
+    ],
+    "inputBindings": [
+      { "outerInput": "current", "targetNode": "difference", "targetPort": 0 },
+      { "outerInput": "previous", "targetNode": "difference", "targetPort": 1 },
+      { "outerInput": "previous", "targetNode": "ratio", "targetPort": 1 }
+    ],
+    "outputBindings": [
+      { "sourceNode": "percent", "sourcePort": 0, "outerOutput": "percent" }
+    ]
+  }
+}
