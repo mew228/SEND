@@ -1,0 +1,11 @@
+services:
+  hackvonium:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    environment:
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y
+      OCAML_WORKER_COMMAND: /app/worker
+    ports:
+      - 8080:8080
+      - 5005:5005

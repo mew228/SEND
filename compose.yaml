@@ -1,0 +1,82 @@
+x-db-name: &db-name send
+x-db-user: &db-user send_user
+x-db-password: &db-password ${SEND_DB_PASSWORD:?Set SEND_DB_PASSWORD before starting docker compose}
+x-db-host: &db-host send-db
+x-db-port: &db-port "5432"
+x-jdbc-url: &jdbc-url jdbc:postgresql://send-db:5432/send
+
+services:
+  send-db:
+    image: timescale/timescaledb:latest-pg16
+    container_name: send-db
+    environment:
+      POSTGRES_DB: *db-name
+      POSTGRES_USER: *db-user
+      POSTGRES_PASSWORD: *db-password
+    expose:
+      - "5432"
+    volumes:
+      - send_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U send_user -d send" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - app-internal
+
+  send-back:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    environment:
+      OCAML_WORKER_COMMAND: /app/worker
+      SPRING_DATASOURCE_URL: *jdbc-url
+      SPRING_DATASOURCE_USERNAME: *db-user
+      SPRING_DATASOURCE_PASSWORD: *db-password
+      PGHOST: *db-host
+      PGPORT: *db-port
+      PGDATABASE: *db-name
+      PGUSER: *db-user
+      PGPASSWORD: *db-password
+      SERVER_PORT: "8080"
+      DATABASE_BOOTSTRAP_DATA_DIRECTORY: /app/data
+      APP_AUTH_SUPABASE_ISSUER_URI: ${APP_AUTH_SUPABASE_ISSUER_URI:?Set APP_AUTH_SUPABASE_ISSUER_URI before starting docker compose}
+      APP_AUTH_SUPABASE_JWK_SET_URI: ${APP_AUTH_SUPABASE_JWK_SET_URI:-}
+      APP_AUTH_SUPABASE_JWT_SECRET: ${APP_AUTH_SUPABASE_JWT_SECRET:-}
+      APP_AUTH_SUPABASE_AUDIENCE: ${APP_AUTH_SUPABASE_AUDIENCE:-authenticated}
+      APP_LECTURES_PROGRESS_COOKIE_SECRET: ${APP_LECTURES_PROGRESS_COOKIE_SECRET:-}
+      APP_ANALYTICS_UMAMI_SCRIPT_URI: ${APP_ANALYTICS_UMAMI_SCRIPT_URI:-}
+      APP_ANALYTICS_UMAMI_WEBSITE_ID: ${APP_ANALYTICS_UMAMI_WEBSITE_ID:-}
+    volumes:
+      - ./data:/app/data:ro
+    expose:
+      - "8080"
+    depends_on:
+      send-db:
+        condition: service_healthy
+    networks:
+      - edge
+      - app-internal
+
+  send-front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL:?Set VITE_SUPABASE_URL before starting docker compose}
+        VITE_SUPABASE_ANON_KEY: ${VITE_SUPABASE_ANON_KEY:?Set VITE_SUPABASE_ANON_KEY before starting docker compose}
+    ports:
+      - "127.0.0.1:5173:80"
+    depends_on:
+      - send-back
+    networks:
+      - edge
+
+volumes:
+  send_db_data:
+
+networks:
+  edge:
+  app-internal:
+    internal: true
